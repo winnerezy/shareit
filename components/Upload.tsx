@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 import { Button, buttonVariants } from "./ui/button";
 
 const Upload = () => {
-  // const [file, setFile] = useState<string | ArrayBuffer | null>(null)
+  
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.forEach((file: File) => {
       const reader = new FileReader();
