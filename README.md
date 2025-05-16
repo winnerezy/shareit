@@ -10,6 +10,8 @@ This is a simple local file sharing platform built using React and Tailwind CSS.
 
 * **File Display:** Shows the name of the file(s) selected for upload.
 
+
+
 ## Installation
 
 To set up the project locally, follow these steps:

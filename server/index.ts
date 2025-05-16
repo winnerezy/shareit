@@ -1,17 +1,17 @@
-import { Server, Socket } from "socket.io"
+import { Server, Socket } from "socket.io";
+import { configDotenv } from "dotenv"
 
-const io = new Server({cors: {
-    origin: "http://localhost:3000",
-    
-}});
-
-io.on("connection", (socket: Socket) => {
-
-  socket.on("file", (data) => {
-    socket.broadcast.emit("send-to", data)
-  })
-
+configDotenv({ path: "../.env" })
+const io = new Server({
+  cors: {
+    origin: process.env.IP_ADDRESS + ":3000",
+  },
 });
 
+io.on("connection", (socket: Socket) => {
+  socket.on("file-chunk", (data) => {
+    socket.broadcast.emit("file-chunk", { ...data, senderId: socket.id });
+  });
+});
 
 io.listen(3005);
