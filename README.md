@@ -1,77 +1,83 @@
-# ShareIt
+# ShareIt 🚀
 
-This is a simple local file sharing platform built using React and Tailwind CSS. It allows users to easily upload files via drag-and-drop or by clicking a button.
+![ShareIt Demo](https://via.placeholder.com/800x400.png?text=ShareIt+Demo) <!-- Add actual demo image -->
 
-## Features
+A lightning-fast local file sharing platform built with modern web technologies. Transfer files seamlessly between devices on the same network using WebSocket communication.
 
-* **Drag-and-Drop Upload:** Easily upload files by dragging them into the designated area.
+## Features ✨
 
-* **Click-to-Upload:** Alternatively, click the upload area to select files from your file explorer.
+* **Drag-and-Drop Interface**  
+  Intuitive file upload with instant visual feedback
 
-* **File Display:** Shows the name of the file(s) selected for upload.
+* **Real-time Progress Tracking**  
+  Live updates for both sender and receiver during transfers
 
+* **Chunk-based Transfers**  
+  Reliable large file handling with 64KB chunking system
 
+* **Cross-device Compatibility**  
+  Web-based solution works on any modern browser
 
-## Installation
+* **Instant Downloads**  
+  Automatic file assembly and download prompting for receivers
 
-To set up the project locally, follow these steps:
+## Tech Stack 🛠️
 
-1.  **Clone the repository:**
+![Nextjs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-    ```
-    git clone (https://github.com/winnerezy/shareit)
-    cd (https://github.com/winnerezy/shareit.git)
+## Prerequisites 📋
 
-    ```
+- Node.js v18+
+- Bun v1.0+ (or npm/yarn)
+- WebSocket-enabled network environment
 
-2.  **Install dependencies:**
+## Installation ⚙️
 
-    ```
-    bun install
-    # or using yarn
-    yarn install
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/winnerezy/shareit.git
+   cd shareit
 
-    ```
+   Install dependencies
+```bash
+bun install
+Alternative with npm
+npm install
+```
+Start development server
+```bash
 
-3.  **Run the development server:**
+bun dev
+Alternative with npm
+npm run dev
+```
 
-    ```
-    bun dev
-    # or using yarn
-    yarn dev
+Usage Guide 
 
-    ```
+## Sending Files
+```
+    Open ShareIt in your browser at http://localhost:3000
 
-The application should now be running at `http://localhost:3000`.
+    Upload files using either:
 
-## Usage
+        Drag-and-drop into the designated zone
 
-1.  Open the application in your web browser.
+        Click to browse local files
 
-2.  You will see an upload area labeled "Click or Drag n Drop To Upload".
+    Verify selected files in the preview list
 
-3.  **To upload:**
+    Click Send to initiate transfer
 
-    * Drag and drop one or more files into this area.
+    Share your session ID with the receiver
+```
+## Receiving Files
+```
+    Connect to the same network
 
-    * Alternatively, click on the upload area, and a file explorer window will open. Select the file(s) you wish to upload.
+    Open ShareIt and wait for automatic download prompt
 
-4.  The name(s) of the selected file(s) will appear below the upload area.
-
-5.  Click the "Send" button to initiate the file sharing process (Note: The provided code snippet only handles file selection; the actual sending/sharing logic needs to be implemented).
-
-## Technologies Used
-
-* React
-
-* Next.js (assuming based on `use client`)
-
-* Tailwind CSS
-
-* lucide-react (for icons)
-
-* react-dropzone (for drag-and-drop functionality)
-
-## Contributing
-
-I welcome contributions! If you have any ideas, improvements, or bug fixes, feel free to open an issue or submit a pull request. Let's make this platform even more amazing together!
+    Files will be automatically saved to your downloads folder
+```
