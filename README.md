@@ -1,106 +1,100 @@
-# ShareIt 🚀
+# ShareIt
 
-![ShareIt Demo](https://via.placeholder.com/800x400.png?text=ShareIt+Demo)
+![ShareIt Demo](https://via.placeholder.com/800x400.png?text=ShareIt-Go+Demo)
 
-A lightning-fast local file sharing platform built with modern web technologies. Transfer files seamlessly between devices on the same network using WebSocket communication.
+A simple local file upload server built with Go’s standard library. Upload multiple files via a multipart form and save them to a local `uploads/` directory.
 
 ---
 
 ## ✨ Features
 
-* **Drag-and-Drop Interface**
-  Intuitive file upload with instant visual feedback.
+* **Multi-File Upload**  
+  Handle one or more files in a single POST request via `multipart/form-data`.
 
-* **Real-time Progress Tracking**
-  Live updates for both sender and receiver during transfers.
+* **HTTP Method Validation**  
+  Reject non-POST uploads with a `405 Method Not Allowed` response.
 
-* **Chunk-based Transfers**
-  Reliable large file handling with 64KB chunking system.
+* **Automatic Directory Creation**  
+  Ensures `./uploads/` exists on startup before saving files.
 
-* **Cross-device Compatibility**
-  Web-based solution works on any modern browser.
-
-* **Instant Downloads**
-  Automatic file assembly and download prompting for receivers.
+* **Simple HTML Frontend**  
+  Serves an `index.html` form for drag-and-drop or browse-and-select uploads.
 
 ---
 
 ## 🛠️ Tech Stack
 
-![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge\&logo=nextdotjs\&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge\&logo=typescript\&logoColor=white)
-![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge\&logo=socket.io\&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge\&logo=tailwind-css\&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)  
+![Net/HTTP](https://img.shields.io/badge/net--http-000000?style=for-the-badge&logo=go&logoColor=white)
 
 ---
 
 ## 📋 Prerequisites
 
-* Node.js v23+
-* Bun v1.0+ (or npm/yarn)
-* WebSocket-enabled network environment
+* Go 1.20+ installed
 
 ---
 
 ## ⚙️ Installation
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/winnerezy/shareit.git
-cd shareit
-```
+cd shareit-go
 
-### 2. Install Dependencies
+2. Build the server
 
-Using **Bun**:
+go build -o shareit-go
 
-```bash
-bun install
-```
+🚀 Running the Server
 
-Or with **npm**:
+./shareit
 
-```bash
-npm install
-```
+By default, the server will:
 
-### 3. Start Development Server
+    Create ./uploads/ if it doesn’t exist.
 
-Using **Bun**:
+    Listen on port 3000.
 
-```bash
-bun dev
-```
+    Serve index.html at GET YOUR_PC_IP_ADDRESS.
 
-Or with **npm**:
+    Accept file uploads at POST YOUR_PC_IP_ADDRESS.
 
-```bash
-npm run dev
-```
+📄 Usage Guide
+🔼 Uploading Files
 
----
+    Open your browser to YOUR_PC_IP_ADDRESS.
 
-## 📄 Usage Guide
+    Use the provided form to drag & drop or browse for files.
 
-### 🔼 Sending Files
+    Click Upload to submit.
 
-1. Open ShareIt in your browser using your device's IP address.
-2. Upload files using either:
+    On success, files are saved to ./uploads/ and you’ll see a console log:
 
-   * Drag-and-drop into the designated zone
-   * Click to browse and select files
-3. Verify selected files in the preview list.
-4. Click **Send** to initiate transfer.
-5. Share your **session ID** with the receiver.
+    File saved successfully: uploads/your-file-name.ext
 
----
+🔽 Handling Errors
 
-### 🔽 Receiving Files
+    405 Method Not Allowed
+    Trying any method other than GET / or POST / will return a 405 status.
 
-1. Connect to the **same network** as the sender.
-2. Open ShareIt in your browser.
-3. Wait for the **automatic download prompt**.
-4. Files will be automatically saved to your **Downloads** folder.
+    Bad Form Data
+    If the upload form is malformed, you’ll see an error logged in the console and a 400 response.
 
----
+📂 Project Structure
+
+.
+├── index.html         # Simple upload form
+├── main.go            # HTTP server & upload handler
+└── uploads/           # Directory where files are saved
+
+🤝 Contributing
+
+Feel free to open issues or submit pull requests for improvements, such as:
+
+    Adding file type validation
+
+    Progress reporting on the frontend
+
+    Authentication or access control
